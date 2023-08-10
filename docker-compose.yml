@@ -2,9 +2,19 @@ version: '3.9'
 
 services:
   php:
+    container_name: gcn-php
     image: php:8.2-apache
     restart: unless-stopped
     ports:
       - 80:80
+    env_file:
+      - ./source/.env
+    command: >
+      bash -c '
+      apt update;
+      curl -sSL https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions -o - | sh -s zip;
+      curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer;
+      composer -d ./composer install;
+      apache2-foreground'
     volumes:
-      - ./source:/var/www/html
+      - ./source/php:/var/www/html
