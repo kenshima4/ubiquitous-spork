@@ -1,19 +1,19 @@
-# Applicants Assignment <img src="https://media.giphy.com/media/3nxvpK0CSxT88bFfig/giphy.gif"  width="200" hight="200" style="float: right; padding : 10px"/>
+# Applicants Assignment
 ## Objectives:
-- Implement a php restful api
-- Implement a simple frontend to consume the api
+- Implement a PHP restful API
+- Implement a simple frontend to consume the API
 ## General Instructions:
 - Fork the repository and create a pull request when you are done.
-- This assigment is meant to be completed alone, without any help from others.
+- This assignment is meant to be completed alone, without any help from others.
 - You are free to use any resources you can find online.
-- You code will be inspected to ensure instructions were followed.
-## After successfuly completing this assignment: <img src="https://media.giphy.com/media/gLcUG7QiR0jpMzoNUu/giphy.gif"  width="200" hight="200" style="float: right; padding : 10px"/>
+- Your code will be inspected to ensure instructions are followed.
+## After successfully completing this assignment: 
 - You will be invited for an interview.
 ---
 # Assignment Instructions:
 ## Backend:
-- Create a php restful api that will allow the following actions:
-    - Your backend should comsume the following payload:
+- Create a PHP restful API that will allow the following actions:
+    - Your backend should consume the following payload:
         ```json
         {
             "Unit Name": "String",
@@ -23,8 +23,8 @@
             "Ages": [<int array>]
         }
         ```
-    - Your backend will them mutate the data and pull rates from a remote api:
-        - The remote api is located at: https://dev.gondwana-collection.com/Web-Store/Rates/Rates.php
+    - Your backend will then mutate the data and pull rates from a remote API:
+        - The remote API is located at: https://dev.gondwana-collection.com/Web-Store/Rates/Rates.php
         - Post request with the following payload:
         ```json
         {
@@ -43,7 +43,7 @@
         ```
     - Return the rates to the frontend
 ## Frontend:
-- Create a simple frontend that will generate the request, and display the response body.
+- Create a simple frontend to generate the request, and display the response body.
     - The front-end display the following:
         - Unit Name
         - Rate
