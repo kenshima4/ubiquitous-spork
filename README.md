@@ -1,19 +1,23 @@
-# Applicants Assignment
-## Objectives:
-- Implement a PHP restful API
-- Implement a simple frontend to consume the API
-## General Instructions:
-- Fork the repository and create a pull request when you are done.
-- This assignment is meant to be completed alone, without any help from others.
-- You are free to use any resources you can find online.
-- Your code will be inspected to ensure instructions are followed.
-## After successfully completing this assignment: 
-- You will be invited for an interview.
+# Job Application Assignment
+Welcome applicant, we're glad that you've shown interest in our open position. As a part of the selection process, we would like you to complete a small task that will allow us to assess your skills and capabilities.
+
+## Objective:
+- Develop a PHP restful API
+- Construct a simple UI to interact with the API
+
+## General Guidelines:
+1. Please start the assignment by forking the repository and creating a pull request once you have completed your task.
+2. Remember, this is an individual assignment, hence, collaboration isn't allowed.
+3. Feel free to utilize any online resources for guidance.
+4. Code will be reviewed meticulously to ensure our guidelines and instructions were strictly followed.
+
+Upon successful completion and evaluation of this assignment, you would be shortlisted for the subsequent interview round.
+
 ---
-# Assignment Instructions:
+# Detailed Assignment Instructions:
 ## Backend:
-- Create a PHP restful API that will allow the following actions:
-    - Your backend should consume the following payload:
+1. Build a PHP restful API capable of performing the following operations:
+    - The backend should be able to ingest the following payload:
         ```json
         {
             "Unit Name": "String",
@@ -23,9 +27,9 @@
             "Ages": [<int array>]
         }
         ```
-    - Your backend will then mutate the data and pull rates from a remote API:
-        - The remote API is located at: https://dev.gondwana-collection.com/Web-Store/Rates/Rates.php
-        - Post request with the following payload:
+    - Post API call to the following address with the converted payload:
+      [Remote API Address](https://dev.gondwana-collection.com/Web-Store/Rates/Rates.php)
+        - Mutate your ingested payload to the following format to fit the parameters of the remote API:
         ```json
         {
             "Unit Type ID": <int>,
@@ -41,12 +45,16 @@
             ]
         }
         ```
-    - Return the rates to the frontend
+    - Relay the obtained rates back to the frontend
+    - Use the following Unit Type IDs [-2147483637,-2147483456] for testing. 
 ## Frontend:
-- Create a simple frontend to generate the request, and display the response body.
-    - The front-end display the following:
+1. Construct a simple, interactive and user-friendly frontend to send requests to your API and display the responses.
+    - The frontend should aid the users in visualising the following data:
         - Unit Name
         - Rate
-        - Date range
+        - Date Range
         - Availability
-- You have creative freedom in terms of how the interface should look.
+        
+- The UI design is left to your discretion and creativity, however, the emphasis should be on functionality and user experience.
+
+Thank you for your interest and we look forward to reviewing your work! Good luck.
