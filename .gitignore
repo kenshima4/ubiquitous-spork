@@ -6,10 +6,16 @@
 !.vscode/*.code-snippets
 
 #env file
-/source/.env
+.env
+
+#vendors
+vendor/
 
 # Local History for Visual Studio Code
 .history/
 
 # Built Visual Studio Code Extensions
 *.vsix
+
+*composer.json
+*composer.lock
