@@ -15,4 +15,4 @@ if (php_sapi_name() == 'cli-server') {
     }
 }
 
-require __DIR__ . '/index.php';
+require_once __DIR__ . '/index.php';
