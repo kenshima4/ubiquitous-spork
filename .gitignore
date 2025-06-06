@@ -16,6 +16,3 @@ vendor/
 
 # Built Visual Studio Code Extensions
 *.vsix
-
-*composer.json
-*composer.lock
