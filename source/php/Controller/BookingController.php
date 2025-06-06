@@ -15,7 +15,7 @@ class BookingController {
 
     public function processRequest()
     {
-        error_log("in PROCESS REQUEST");
+
         switch ($this->requestMethod) {
             case 'POST':
                 $response = $this->ingestPayload();
@@ -65,14 +65,12 @@ class BookingController {
     private function transformPayload($input)
     {
         // Log raw inputs
-        error_log("Raw Arrival: " . $input['Arrival']);
-        error_log("Raw Departure: " . $input['Departure']);
+  
 
         $arrivalDate = \DateTime::createFromFormat('Y-m-d', $input['Arrival']);
         $departureDate = \DateTime::createFromFormat('Y-m-d', $input['Departure']);
 
         if (!$arrivalDate || !$departureDate) {
-            error_log("Date parsing failed: Arrival or Departure date is in wrong format.");
             throw new \Exception("Invalid date format. Please use d/m/Y.");
         }
 
