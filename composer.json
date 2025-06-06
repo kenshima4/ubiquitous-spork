@@ -1,7 +1,7 @@
 {
     "name": "kenshima4/ubiquitous-spork",
     "description": "Fork of occupant booking restful API",
-    "license": "Open Source",
+    "license": "proprietary",
     "require": {
         "vlucas/phpdotenv": "^5.4.0"
     },
