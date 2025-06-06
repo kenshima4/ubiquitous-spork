@@ -1,29 +1,24 @@
 <?php
 namespace Src\Controller;
 
-use Src\Gateways\BookingGateway;
+use Src\Gateway\BookingGateway;
 
 class BookingController {
-    private $url = getenv('URL');
     private $requestMethod;
-    private $userId;
     private $bookingGateway;
 
-    public function __construct($requestMethod, $userId)
+    public function __construct($requestMethod)
     {
-        
         $this->requestMethod = $requestMethod;
-        $this->userId = $userId;
-        
-        $this->bookingGateway = new BookingGateway($this->url);
+        $this->bookingGateway = new BookingGateway();
     }
 
     public function processRequest()
     {
+        error_log("in PROCESS REQUEST");
         switch ($this->requestMethod) {
             case 'POST':
                 $response = $this->ingestPayload();
-                // $response = $this->createUserFromRequest();
                 break;
             default:
                 $response = $this->notFoundResponse();
@@ -35,67 +30,94 @@ class BookingController {
         }
     }
 
-    function debugToConsole($data) {
-        $output = $data;
-        if (is_array($output))
-            $output = implode(',', $output);
-
-        echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
-    }
-
     private function ingestPayload()
     {
-        $result = (array) json_decode(file_get_contents('php://input'), TRUE);
+        $input = (array) json_decode(file_get_contents('php://input'), true);
 
-        $this->debugToConsole($result);
-        // $result = $this->personGateway->findAll();
-        $response['status_code_header'] = 'HTTP/1.1 200 OK';
-        $response['body'] = json_encode($result);
-        return $response;
-    }
-
-    
-
-    private function createUserFromRequest()
-    {
-        $input = (array) json_decode(file_get_contents('php://input'), TRUE);
         
-        if (! $this->validatePerson($input)) {
+        if (! $this->validatePayload($input)) {
             return $this->unprocessableEntityResponse();
         }
 
-        $this->bookingGateway->insert($input);
-        $response['status_code_header'] = 'HTTP/1.1 201 Created';
-        $response['body'] = null;
-        return $response;
-    }
+        // Transform data
+        $transformed = $this->transformPayload($input);
 
-    
+        // Call remote API through the Gateway
+        $result = $this->bookingGateway->fetchRates($transformed);
+ 
 
-    private function validatePerson($input)
-    {
-        // if (! isset($input['firstname'])) {
-        //     return false;
-        // }
-        // if (! isset($input['lastname'])) {
-        //     return false;
-        // }
-        // return true;
-    }
-
-    private function unprocessableEntityResponse()
-    {
-        $response['status_code_header'] = 'HTTP/1.1 422 Unprocessable Entity';
+        $response['status_code_header'] = 'HTTP/1.1 200 OK';
         $response['body'] = json_encode([
-            'error' => 'Invalid input'
+            'unit_name' => $input['Unit Name'], // Return original unit name
+            'rate' => $result['data']['Total Charge'] ?? 0,
+            'available' => ($result['data']['Rooms'] ?? 0) > 0,
+            'arrival' => $input['Arrival'],
+            'departure' => $input['Departure']
         ]);
         return $response;
     }
 
+    private function validatePayload($input)
+    {
+        return isset($input['Unit Name'], $input['Arrival'], $input['Departure'], $input['Occupants'], $input['Ages']);
+    }
+
+    private function transformPayload($input)
+    {
+        // Log raw inputs
+        error_log("Raw Arrival: " . $input['Arrival']);
+        error_log("Raw Departure: " . $input['Departure']);
+
+        $arrivalDate = \DateTime::createFromFormat('Y-m-d', $input['Arrival']);
+        $departureDate = \DateTime::createFromFormat('Y-m-d', $input['Departure']);
+
+        if (!$arrivalDate || !$departureDate) {
+            error_log("Date parsing failed: Arrival or Departure date is in wrong format.");
+            throw new \Exception("Invalid date format. Please use d/m/Y.");
+        }
+
+        $arrival = $arrivalDate->format('Y-m-d');
+        $departure = $departureDate->format('Y-m-d');
+
+        // Convert ages to guest format
+        $guests = array_map(function ($age) {
+            return [
+                'Age Group' => ($age >= 13) ? 'Adult' : 'Child'
+            ];
+        }, $input['Ages']);
+
+        // Map Unit Name to hardcoded test ID 
+        if ($input['Unit Name'] === 'Unit 1') {
+            $unitTypeId = -2147483637;
+        } elseif ($input['Unit Name'] === 'Unit 2') {
+            $unitTypeId = -2147483456;
+        } else {
+            
+            $unitTypeId = null; //
+        }
+
+        return [
+            'Unit Type ID' => $unitTypeId,
+            'Arrival' => $arrival,
+            'Departure' => $departure,
+            'Guests' => $guests
+        ];
+    }
+
+
+    private function unprocessableEntityResponse()
+    {
+        return [
+            'status_code_header' => 'HTTP/1.1 422 Unprocessable Entity',
+            'body' => json_encode(['error' => 'Invalid input'])
+        ];
+    }
+
     private function notFoundResponse()
     {
-        $response['status_code_header'] = 'HTTP/1.1 404 Not Found';
-        $response['body'] = null;
-        return $response;
+        return [
+            'status_code_header' => 'HTTP/1.1 404 Not Found',
+            'body' => null
+        ];
     }
 }

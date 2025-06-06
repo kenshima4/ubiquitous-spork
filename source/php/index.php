@@ -40,7 +40,7 @@ $requestMethod = $_SERVER["REQUEST_METHOD"];
 $unitTypeId = getenv("UNITTYPEID1");
 
 $unitTypeId = null;
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && $uri === 'php/booking') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && $uri === '/php/booking') {
     error_log($uri);
     // pass the request method and user ID to the PersonController and process the HTTP request:
     $controller = new BookingController($requestMethod, $unitTypeId);
