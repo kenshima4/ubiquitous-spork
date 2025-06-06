@@ -1,4 +1,4 @@
-version: '3.9'
+
 
 services:
   php:
@@ -8,7 +8,7 @@ services:
     ports:
       - 80:80
     env_file:
-      - ./source/.env
+      - ./.env
     command: >
       bash -c '
       apt update;
@@ -17,4 +17,4 @@ services:
       composer -d ./composer install;
       apache2-foreground'
     volumes:
-      - ./source/php:/var/www/html
+      - ./source/:/var/www/html
