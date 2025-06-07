@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__ . '/../composer/vendor/autoload.php';
 
 require_once "bootstrap.php";
 
@@ -16,7 +16,7 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 // $uri = explode( '/', $uri );
 
-error_log("URI" . $uri);
+
 
 
 
@@ -24,7 +24,7 @@ error_log("URI" . $uri);
 // all of our endpoints start with /person
 // everything else results in a 404 Not Found
 if ($uri !== '/php/booking' ) {
-    error_log("uri not equal to php");
+
     
     header("HTTP/1.1 404 Not Found");
     exit();
@@ -41,7 +41,7 @@ $unitTypeId = getenv("UNITTYPEID1");
 
 $unitTypeId = null;
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $uri === '/php/booking') {
-    error_log($uri);
+
     // pass the request method and user ID to the PersonController and process the HTTP request:
     $controller = new BookingController($requestMethod, $unitTypeId);
 
