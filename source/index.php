@@ -39,7 +39,6 @@ $unitTypeId = getenv("UNITTYPEID1");
 $unitTypeId = null;
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && $uri === '/') {
-    error_log("in home page");
     header('Location: /frontend/frontend.php');
     exit;
 }
