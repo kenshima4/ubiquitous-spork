@@ -3,10 +3,6 @@ require_once __DIR__ . '/composer/vendor/autoload.php';
 
 require_once __DIR__ . "/php/bootstrap.php";
 
-use Dotenv\Dotenv;
-$dotenv = Dotenv::createImmutable(__DIR__ . '/../');
-$dotenv->load();
-
 use Src\Controller\BookingController;
 
 // header("Access-Control-Allow-Origin: http:localhost/");
