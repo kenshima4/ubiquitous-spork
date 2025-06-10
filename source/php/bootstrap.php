@@ -8,5 +8,3 @@ $dotenv->load();
 // test code, should output:
 // api://default
 // when you run $ php bootstrap.php
-echo(getenv('INTERNALURI'));
-echo(getenv('EXTERNALAPI'));
