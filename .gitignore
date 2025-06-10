@@ -16,5 +16,3 @@ vendor/
 
 # Built Visual Studio Code Extensions
 *.vsix
-
-#revert gitignore
