@@ -58,3 +58,10 @@ Upon successful completion and evaluation of this assignment, you would be short
 - The UI design is left to your discretion and creativity, however, the emphasis should be on functionality and user experience.
 
 Thank you for your interest and we look forward to reviewing your work! Good luck.
+
+
+# Run Instructions
+
+1. Run Server from root directory `php -S localhost:8080 -t source/`
+2. In your browser, navigate to `http://localhost:8080/frontend/frontend.php`
+3. For testing, fill in parameters "Unit 1"/"Unit 2" for Unit Name, the rest are up to you.

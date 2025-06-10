@@ -71,7 +71,7 @@ class BookingController {
         $departureDate = \DateTime::createFromFormat('Y-m-d', $input['Departure']);
 
         if (!$arrivalDate || !$departureDate) {
-            throw new \Exception("Invalid date format. Please use d/m/Y.");
+            throw new \Exception("Invalid date format. Please use Y/m/d.");
         }
 
         $arrival = $arrivalDate->format('Y-m-d');
@@ -91,7 +91,7 @@ class BookingController {
             $unitTypeId = -2147483456;
         } else {
             
-            $unitTypeId = null; //
+            $unitTypeId = null; 
         }
 
         return [

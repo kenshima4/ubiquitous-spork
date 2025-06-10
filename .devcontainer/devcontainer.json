@@ -2,6 +2,6 @@
     "name": "GCN Dev Container",
     "dockerComposeFile": ["../docker-compose.yml"],
     "service": "php",
-    "workspaceFolder": "/var/www/html",
+    "workspaceFolder": "/source",
     "shutdownAction": "stopCompose"
 }

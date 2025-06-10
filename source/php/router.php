@@ -8,8 +8,7 @@ if (php_sapi_name() == 'cli-server') {
     $file = __DIR__ . $url['path'];
     
 
-    error_log($url);
-    error_log($file);
+
     if (is_file($file)) {
         return false; // serve the file directly
     }
