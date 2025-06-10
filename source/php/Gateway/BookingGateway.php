@@ -7,7 +7,7 @@ class BookingGateway {
 
     public function __construct()
     {
-        $this->url = getenv("URL") ?: "https://dev.gondwana-collection.com/Web-Store/Rates/Rates.php";
+        $this->url = getenv("URL") ?: "External URL Not Found";
     }
 
     public function fetchRates($payload)
