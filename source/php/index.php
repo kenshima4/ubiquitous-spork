@@ -21,7 +21,6 @@ if ($requestMethod === 'GET' && $uri === "/") {
 
 // pass the request method and user ID to the PersonController and process the HTTP request:
 if ($requestMethod === 'POST' && $uri === "/php/booking") {
-    require __DIR__ . '/bootstrap.php';
     require __DIR__ . '/Controller/BookingController.php';
 
     $controller = new Src\Controller\BookingController($requestMethod);

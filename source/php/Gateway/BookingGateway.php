@@ -1,8 +1,7 @@
 <?php
 namespace Src\Gateway;
 
-// require_once __DIR__ . '/../bootstrap.php';
-// require __DIR__ . '/../../composer/vendor/autoload.php';
+require __DIR__ . '/../bootstrap.php';
 
 class BookingGateway {
 
