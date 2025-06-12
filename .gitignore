@@ -16,3 +16,7 @@ vendor/
 
 # Built Visual Studio Code Extensions
 *.vsix
+
+
+# for macos ignore these
+*.DS_Store
