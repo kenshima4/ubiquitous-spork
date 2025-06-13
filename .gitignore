@@ -11,6 +11,7 @@
 #vendors
 vendor/
 
+*node_modules*
 # Local History for Visual Studio Code
 .history/
 

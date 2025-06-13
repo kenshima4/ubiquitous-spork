@@ -5,10 +5,9 @@ namespace Frontend;
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- for jquery -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <!-- for dates -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script src="utils/moment.min.js"></script>
+  <script integrity="jzJ+sNWbKe71gDLLfQKgdtslQjhK70oKLFN+wmwxyg6mQN7Vem+wzce4pryF0HP/"></script>
 
   <meta charset="UTF-8" />
 
