@@ -1,9 +1,0 @@
-<phpunit bootstrap="Src/Php/bootstrap.php"
-         colors="true"
-         verbose="true">
-    <testsuites>
-        <testsuite name="Project Test Suite">
-            <directory>./Tests</directory>
-        </testsuite>
-    </testsuites>
-</phpunit>
