@@ -62,6 +62,6 @@ Thank you for your interest and we look forward to reviewing your work! Good luc
 
 # Run Instructions
 
-1. Run Server from root directory `php -S localhost:8080 -t source/`
-2. In your browser, navigate to `http://localhost:8080/frontend/frontend.php`
+1. Run Server from root directory `php -S localhost:8000 router.php`
+2. In your browser, navigate to `http://localhost:8000`
 3. For testing, fill in parameters "Unit 1"/"Unit 2" for Unit Name, the rest are up to you.
