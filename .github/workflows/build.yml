@@ -23,7 +23,7 @@ jobs:
         run: composer update --no-ansi --no-interaction --no-progress --working-dir=Src/composer
 
       - name: Run tests with phpunit/phpunit
-        run: vendor/bin/phpunit --coverage-clover=Src/reports/coverage/coverage.xml
+        run: Src/composer/vendor/bin/phpunit --coverage-clover=Src/reports/coverage/coverage.xml
 
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v5
