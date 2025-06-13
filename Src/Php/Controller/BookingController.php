@@ -42,7 +42,7 @@ class BookingController {
         
     }
 
-    private function ingestPayload()
+    public function ingestPayload()
     {
         $input = (array) json_decode(file_get_contents('php://input'), true);
 
@@ -55,7 +55,7 @@ class BookingController {
         return $this->transformPayload($input);
     }
     
-    private function validatePayload($input)
+    public function validatePayload($input)
     {
         $valid =true;
         $unitName = $input['Unit Name'];
@@ -78,7 +78,7 @@ class BookingController {
         return $valid;
     }
 
-    private function all($elems, $predicate) {
+    public function all($elems, $predicate) {
         foreach ($elems as $elem) {
             if (!call_user_func($predicate, $elem)) {
                 return false;
@@ -88,7 +88,7 @@ class BookingController {
         return true;
     }
 
-    private function transformPayload($input)
+    public function transformPayload($input)
     {
         $this->arrivalDate = $input['Arrival'];
         $this->departureDate = $input['Departure'];
@@ -112,7 +112,7 @@ class BookingController {
         return $response;
     }
 
-    private function fetchRates($dataToSend){
+    public function fetchRates($dataToSend){
         // Call remote API through the Gateway
         $result = $this->bookingGateway->fetchRates($dataToSend);
         if ($result === null){
@@ -133,7 +133,7 @@ class BookingController {
         return $response;
     }
 
-    private function getNameFromId($id){
+    public function getNameFromId($id){
         $key = array_search($id, $this->ids);
         if($key === false)
         {
@@ -146,7 +146,7 @@ class BookingController {
         
     }
 
-    private function unprocessableEntityResponse()
+    public function unprocessableEntityResponse()
     {
         return [
             'status_code_header' => 'HTTP/1.1 422 Unprocessable Entity',
@@ -154,7 +154,7 @@ class BookingController {
         ];
     }
 
-    private function notFoundResponse()
+    public function notFoundResponse()
     {
         return [
             'status_code_header' => 'HTTP/1.1 404 Not Found',
