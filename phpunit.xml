@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/11.5/phpunit.xsd"
-         bootstrap="Php/bootstrap.php"
+         bootstrap="Src/composer/vendor/autoload.php"
          cacheDirectory=".phpunit.cache"
          executionOrder="depends,defects"
          shortenArraysForExportThreshold="10"
@@ -14,13 +14,13 @@
          failOnWarning="false">
     <testsuites>
         <testsuite name="default">
-            <directory>Tests</directory>
+            <directory>Src/Tests</directory>
         </testsuite>
     </testsuites>
 
     <source ignoreIndirectDeprecations="true" restrictNotices="true" restrictWarnings="true">
         <include>
-            <directory>/</directory>
+            <directory>Src</directory>
         </include>
     </source>
 </phpunit>

@@ -22,7 +22,7 @@ jobs:
         run: echo "${{ secrets.ENV_FILE }}" > .env
 
       - name: Install dependencies with composer
-        run: composer update --no-ansi --no-interaction --no-progress --working-dir=Src/composer
+        run: composer update --working-dir=Src/composer
 
       - name: Run tests with phpunit/phpunit
         run: php -d xdebug.mode=coverage ./Src/composer/vendor/bin/phpunit --coverage-clover=Src/reports/coverage/coverage.xml Src/Tests
