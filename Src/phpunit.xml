@@ -1,9 +1,38 @@
-<phpunit bootstrap="Php/bootstrap.php"
-         colors="true"
-         verbose="true">
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/11.5/phpunit.xsd"
+         bootstrap="Php/bootstrap.php"
+         cacheDirectory=".phpunit.cache"
+         executionOrder="depends,defects"
+         shortenArraysForExportThreshold="10"
+         requireCoverageMetadata="true"
+         beStrictAboutCoverageMetadata="true"
+         beStrictAboutOutputDuringTests="true"
+         displayDetailsOnPhpunitDeprecations="true"
+         failOnPhpunitDeprecation="true"
+         failOnRisky="true"
+         failOnWarning="true">
+
     <testsuites>
-        <testsuite name="Project Test Suite">
-            <directory>./Tests</directory>
+        <testsuite name="default">
+            <directory>Tests</directory>
         </testsuite>
     </testsuites>
+
+    <coverage processUncoveredFiles="true">
+        <include>
+            <directory suffix=".php">Php/Controller</directory>
+            <directory suffix=".php">Php/Gateway</directory>
+        </include>
+        <report>
+            <clover outputFile="reports/coverage/coverage.xml"/>
+            <html outputDirectory="reports/coverage/html"/>
+        </report>
+    </coverage>
+
+    <source ignoreIndirectDeprecations="true" restrictNotices="true" restrictWarnings="true">
+        <include>
+            <directory>Php</directory>
+        </include>
+    </source>
 </phpunit>
