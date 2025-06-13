@@ -20,7 +20,7 @@ jobs:
           coverage: xdebug
 
       - name: Install dependencies with composer
-        run: composer update --no-ansi --no-interaction --no-progress
+        run: composer update --no-ansi --no-interaction --no-progress --working-dir=Src/composer
 
       - name: Run tests with phpunit/phpunit
         run: vendor/bin/phpunit --coverage-clover=Src/reports/coverage/coverage.xml
