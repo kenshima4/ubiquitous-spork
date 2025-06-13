@@ -19,14 +19,12 @@
         </testsuite>
     </testsuites>
 
-    <coverage processUncoveredFiles="true">
+    <coverage>
         <include>
-            <directory suffix=".php">Php/Controller</directory>
-            <directory suffix=".php">Php/Gateway</directory>
+            <directory suffix=".php">Src/Php</directory>
         </include>
         <report>
-            <clover outputFile="reports/coverage/coverage.xml"/>
-            <html outputDirectory="reports/coverage/html"/>
+            <clover outputFile="Src/reports/coverage/coverage.xml"/>
         </report>
     </coverage>
 
