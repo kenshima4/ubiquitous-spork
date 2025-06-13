@@ -1,5 +1,7 @@
 <?php
-namespace Src\Gateway;
+namespace Php\Gateway;
+
+require_once __DIR__ . '/../bootstrap.php'; //NOSONAR
 
 class BookingGateway {
 
@@ -7,14 +9,15 @@ class BookingGateway {
 
     public function __construct()
     {
-        $this->url = getenv("URL") ?: "External URL Not Found";
+        $this->url = $_ENV["EXTERNALAPI"] ? : "External URL Not Found";
     }
 
     public function fetchRates($payload)
     {
-        $ch = curl_init($this->url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $this->url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
         curl_setopt($ch, CURLOPT_HTTPHEADER, [
             'Content-Type: application/json'
         ]);

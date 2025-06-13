@@ -17,4 +17,4 @@ services:
       composer -d ./composer install;
       apache2-foreground'
     volumes:
-      - ./source/:/var/www/html
+      - ./Src/:/var/www/html

@@ -7,7 +7,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Src\\": "source/" 
+            "Php\\": "../Php",
+            "Php\\Controller\\": "../Php/Controller",
+            "Php\\Gateway\\": "../Php/Gateway"
+
         }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11.5"
     }
 }
