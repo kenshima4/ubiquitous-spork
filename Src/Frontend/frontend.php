@@ -6,7 +6,7 @@ namespace Frontend;
 <html lang="en">
 <head>
   <!-- for dates -->
-  <script src="utils/moment.min.js"></script>
+  <script type="text/JavaScript" src="https://MomentJS.com/downloads/moment.js"></script>
   <script integrity="jzJ+sNWbKe71gDLLfQKgdtslQjhK70oKLFN+wmwxyg6mQN7Vem+wzce4pryF0HP/"></script>
 
   <meta charset="UTF-8" />
@@ -65,7 +65,6 @@ namespace Frontend;
     
   </style>
 </head>
-<!-- <body id ="document"> -->
 <body id ="document" onload="testing()">
   <div class="container">
     <h1>Check Unit Availability</h1>
