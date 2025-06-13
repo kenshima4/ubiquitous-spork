@@ -21,7 +21,7 @@ if (!in_array($uri, $allowedUris)){
 
 // Handle frontend route
 if ($requestMethod === 'GET' && $uri === "/") {
-    require __DIR__ . '/../frontend/frontend.php'; //NOSONAR
+    require __DIR__ . '/../Frontend/frontend.php'; //NOSONAR
     
     exit;
 }
