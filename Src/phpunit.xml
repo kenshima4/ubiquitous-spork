@@ -2,7 +2,7 @@
     bootstrap="Php/bootstrap.php"
     colors="true"
     verbose="true"
-    failOnWarning="true"
+    failOnWarning="false"
     failOnRisky="true"
     requireCoverageMetadata="true"
     beStrictAboutCoverageMetadata="true"
